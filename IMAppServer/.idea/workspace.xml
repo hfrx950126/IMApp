@@ -1601,12 +1601,12 @@
       <option name="presentableId" value="Default" />
       <updated>1499404936616</updated>
       <workItem from="1499404944520" duration="674000" />
-      <workItem from="1499405680676" duration="9095000" />
+      <workItem from="1499405680676" duration="9140000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9769000" />
+    <option name="totallyTimeSpent" value="9814000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1619,7 +1619,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="197" y="72" width="1486" height="1000" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
