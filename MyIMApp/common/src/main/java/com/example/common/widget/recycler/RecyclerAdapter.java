@@ -12,8 +12,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Created by Administrator on 2017/7/10 0010.
@@ -85,7 +83,7 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
         root.setOnLongClickListener(this);
 
 
-        holder.mUnBinder = ButterKnife.bind(holder, root);
+
         //绑定callback
         holder.callback = this;
         return holder;
@@ -232,7 +230,7 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
      * @param <Data> 泛型类型
      */
     public static abstract class ViewHolder<Data> extends RecyclerView.ViewHolder {
-        private Unbinder mUnBinder;
+
         protected Data mData;
         private AdapterCallback<Data> callback;
 
