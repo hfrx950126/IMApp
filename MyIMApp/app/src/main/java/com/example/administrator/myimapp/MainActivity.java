@@ -1,11 +1,14 @@
 package com.example.administrator.myimapp;
 
-import android.media.audiofx.LoudnessEnhancer;
+
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.common.app.Activity;
+
+
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,6 +16,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
+    }
+
+    @Override
+    protected int getContentLayoutId() {
+        return 0;
+    }
+
+    @Override
+    protected void initWidget() {
+
+    }
+
+    @Override
+    protected void initData() {
 
     }
 }

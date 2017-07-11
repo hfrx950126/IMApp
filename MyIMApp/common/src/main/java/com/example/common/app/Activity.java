@@ -56,16 +56,14 @@ public abstract class Activity extends AppCompatActivity {
     /**
      * 初始化控件
      */
-    protected void initWidget(){
+    protected abstract void initWidget();
 
-    }
+
 
     /**
      * 初始化数据
      */
-    protected  void initData(){
-
-    }
+    protected abstract void initData();
 
     @Override
     public boolean onSupportNavigateUp() {
