@@ -23,7 +23,8 @@ import butterknife.Unbinder;
 @SuppressWarnings({"unchecked", "unused"})
 public abstract class RecyclerAdapter<Data>
         extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder<Data>>
-        implements View.OnClickListener, View.OnLongClickListener, AdapterCallback<Data> {
+        implements View.OnClickListener, View.OnLongClickListener,
+        AdapterCallback<Data> {
     private final List<Data> mDataList;
     private AdapterListener<Data> mListener;
 
@@ -127,15 +128,6 @@ public abstract class RecyclerAdapter<Data>
     }
 
     /**
-     * 返回整个集合
-     *
-     * @return List<Data>
-     */
-    public List<Data> getItems() {
-        return mDataList;
-    }
-
-    /**
      * 插入一条数据并通知插入
      *
      * @param data Data
@@ -190,19 +182,6 @@ public abstract class RecyclerAdapter<Data>
             return;
         mDataList.addAll(dataList);
         notifyDataSetChanged();
-    }
-
-    @Override
-    public void update(Data data, ViewHolder<Data> holder) {
-        // 得到当前ViewHolder的坐标
-        int pos = holder.getAdapterPosition();
-        if (pos >= 0) {
-            // 进行数据的移除与更新
-            mDataList.remove(pos);
-            mDataList.add(pos, data);
-            // 通知这个坐标下的数据有更新
-            notifyItemChanged(pos);
-        }
     }
 
     @Override
@@ -292,24 +271,6 @@ public abstract class RecyclerAdapter<Data>
             if (this.callback != null) {
                 this.callback.update(data, this);
             }
-        }
-    }
-
-    /**
-     * 对回调接口做一次实现AdapterListener
-     *
-     * @param <Data>
-     */
-    public static abstract class AdapterListenerImpl<Data> implements AdapterListener<Data> {
-
-        @Override
-        public void onItemClick(ViewHolder holder, Data data) {
-
-        }
-
-        @Override
-        public void onItemLongClick(ViewHolder holder, Data data) {
-
         }
     }
 }
