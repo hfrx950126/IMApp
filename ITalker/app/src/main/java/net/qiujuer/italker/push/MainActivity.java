@@ -3,6 +3,7 @@ package net.qiujuer.italker.push;
 
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationMenu;
+import android.support.design.internal.NavigationMenu;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import net.qiujuer.italker.common.widget.PortraitView;
 import net.qiujuer.italker.push.frags.main.ActiveFragment;
 import net.qiujuer.italker.push.frags.main.ContactFragment;
 import net.qiujuer.italker.push.frags.main.GroupFragment;
+import net.qiujuer.italker.push.helper.NavHelper;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -47,7 +49,7 @@ public class MainActivity extends Activity
 
     @BindView(R.id.btn_action)
     FloatActionButton mAction;
-
+    private NavHelper mNavHelper;
     @Override
     protected int getContentLayoutId() {
         return R.layout.activity_main;
@@ -56,6 +58,9 @@ public class MainActivity extends Activity
     @Override
     protected void initWidget() {
         super.initWidget();
+        //初始化底部辅助工具类
+        mNavHelper = new NavHelper();
+        //添加底部导航的监听
         mNavigation.setOnNavigationItemSelectedListener(this);
         Glide.with(this).load(R.drawable.bg_src_morning).centerCrop().into(new ViewTarget<View,GlideDrawable>(mLayAppbar) {
             @Override
@@ -81,60 +86,11 @@ public class MainActivity extends Activity
     }
 
     boolean isFirst = true;
+    //当底部导航被点击触发
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()==R.id.action_home){
-            mTitle.setText(R.string.title_home);
+        //转接事件流到工具类中
 
-            ActiveFragment activeFragment = new ActiveFragment();
-            if(isFirst){
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .add(R.id.lay_container,activeFragment)
-                        .commit();
-                isFirst=false;
-            }else{
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.lay_container,activeFragment)
-                        .commit();
-            }
-
-        }else if(item.getItemId()==R.id.action_group){
-            mTitle.setText(R.string.title_group);
-            GroupFragment groupFragment = new GroupFragment();
-            if(isFirst){
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .add(R.id.lay_container,groupFragment)
-                        .commit();
-                isFirst=false;
-            }else{
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.lay_container,groupFragment)
-                        .commit();
-            }
-        }
-        else if(item.getItemId()==R.id.action_contact){
-            mTitle.setText(R.string.title_contact);
-            ContactFragment contactFragment = new ContactFragment();
-
-            if(isFirst){
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .add(R.id.lay_container,contactFragment)
-                        .commit();
-                isFirst=false;
-            }else{
-
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.lay_container,contactFragment)
-                        .commit();
-            }
-        }
-
-        return true;
+        return mNavHelper.performClickMenu(item.getItemId());
     }
 }

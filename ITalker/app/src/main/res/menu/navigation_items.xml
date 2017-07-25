@@ -8,7 +8,7 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_group"
-        android:icon="@drawable/ic_group"
+        android:icon="@drawable/comui_tab_calculate_selected"
         android:title="@string/action_group"
         app:showAsAction="ifRoom" />
     <item
