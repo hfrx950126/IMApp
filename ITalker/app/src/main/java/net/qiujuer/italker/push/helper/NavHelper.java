@@ -84,7 +84,12 @@ public class NavHelper<T> {
         currentTab = tab;
         doTabChange(currentTab,oldTab);
     }
-    //赋值并调用切换方法
+
+    /**
+     * 进行Fragment的真实的调度操作
+     * @param newTab 新的
+     * @param oldTab 旧的
+     */
     private void doTabChange(Tab<T> newTab,Tab<T> oldTab){
         FragmentTransaction ft = fragmentManager.beginTransaction();
         if(oldTab!=null){
