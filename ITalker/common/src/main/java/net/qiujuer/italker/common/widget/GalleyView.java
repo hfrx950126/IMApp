@@ -13,10 +13,17 @@ import android.support.v7.widget.RecyclerView;
 
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import net.qiujuer.italker.common.R;
 import net.qiujuer.italker.common.widget.recycler.RecyclerAdapter;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,6 +32,7 @@ import java.util.List;
 public class GalleyView extends RecyclerView {
     private static final int LOADER_ID = 0X0100;
     private static final int MAX_IMAGE_COUNT = 3;//最大的选中图片数量
+    private static final int MIN_IMAGE_FILE_SIZE = 10*1024;//最小的图片大小
     private LoaderCallback mLoaderCallback = new LoaderCallback();
     private Adapter mAdapter = new Adapter();
     private List<Image> mSelectedImages = new LinkedList<>();
@@ -87,8 +95,13 @@ public class GalleyView extends RecyclerView {
             //状态已经改变则需要更新
             notifyRefresh = true;
         } else {
-            if (mSelectedImages.size() > MAX_IMAGE_COUNT) {
-                //Toast 一个提示
+            if (mSelectedImages.size() >= MAX_IMAGE_COUNT) {
+                //得到提示文字
+                String str = getResources().getString(R.string.label_gallery_select_max_size);
+                //格式化填充
+                str =String.format(str,MAX_IMAGE_COUNT);
+                //显示
+                Toast.makeText(getContext(),str, Toast.LENGTH_SHORT).show();
                 notifyRefresh = false;
             } else {
                 mSelectedImages.add(image);
@@ -142,6 +155,13 @@ public class GalleyView extends RecyclerView {
     }
 
     /**
+     * 通知Adapter数据更改的方法
+     * @param images 新的数据
+     */
+    private void updateSource(List<Image> images){
+        mAdapter.replace(images);
+    }
+    /**
      * 用于实际的数据加载的Loader Callback
      */
     private class LoaderCallback implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -161,7 +181,7 @@ public class GalleyView extends RecyclerView {
                         IMAGE_PROJECTION,
                         null,
                         null,
-                        IMAGE_PROJECTION[2]+"DESC");//倒序查询
+                        IMAGE_PROJECTION[2] + " DESC");//倒序查询
             }
             return null;
         }
@@ -169,25 +189,47 @@ public class GalleyView extends RecyclerView {
         @Override
         public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
             //当Loader加载完成时
-          List<Image> images = new ArrayList<>();
-            if(data!=null){
+            List<Image> images = new ArrayList<>();
+            if (data != null) {
                 int count = data.getCount();
-                if(count>0){
+                if (count > 0) {
                     //移动游标到顶部
                     data.moveToFirst();
 
-                    do{
-                        //循环读取知道没有下一条数据
-                        int
-                    }while(data.moveToNext());
+                    //得到对应的列的Index坐标
+                    int indexId = data.getColumnIndexOrThrow(IMAGE_PROJECTION[0]);
+                    int indexPath = data.getColumnIndexOrThrow(IMAGE_PROJECTION[1]);
+                    int indexDate = data.getColumnIndexOrThrow(IMAGE_PROJECTION[2]);
+                    do {
+                        //循环读取，直到没有下一条数据
+                        int id = data.getInt(indexId);
+                        String path = data.getString(indexPath);
+                        long dateTime = data.getInt(indexDate);
+
+                        File file = new File(path);
+                        if(!file.exists()||file.length()<MIN_IMAGE_FILE_SIZE){
+                            //如果没有图片，或者图片大小太小，则跳过
+                            continue;
+                        }
+
+                        Image image = new Image();
+                        image.id = id;
+                        image.path = path;
+                        image.date = dateTime;
+                        images.add(image);
+
+
+                    } while (data.moveToNext());
                 }
             }
-
+            updateSource(images);
         }
+
 
         @Override
         public void onLoaderReset(Loader<Cursor> loader) {
-            //当Loader销毁或者重置了
+            //当Loader销毁或者重置了,进行界面清空操作
+            updateSource(null);
         }
     }
 
@@ -217,6 +259,9 @@ public class GalleyView extends RecyclerView {
         }
     }
 
+    /**
+     * 适配器
+     */
     private class Adapter extends RecyclerAdapter<Image> {
 
         @Override
@@ -230,19 +275,40 @@ public class GalleyView extends RecyclerView {
         }
     }
 
+    /**
+     * Cell对应的Holder
+     */
     private class ViewHolder extends RecyclerAdapter.ViewHolder<Image> {
-
+        private ImageView mPic;
+        private View mShade;
+        private CheckBox mSelected;
 
         public ViewHolder(View itemView) {
             super(itemView);
+
+            mPic = (ImageView) itemView.findViewById(R.id.im_image);
+            mShade = itemView.findViewById(R.id.view_shade);
+            mSelected = (CheckBox) itemView.findViewById(R.id.cb_select);
         }
 
         @Override
         protected void onBind(Image image) {
+            Glide.with(getContext())
+                    .load(image.path)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE) //不使用缓存，直接从原图加载
+                    .centerCrop() //居中剪切
+                    .placeholder(R.color.green_200) //默认颜色
+                    .into(mPic);
 
+            mShade.setVisibility(image.isSelect?VISIBLE:INVISIBLE);
+            mSelected.setChecked(image.isSelect);
+            mSelected.setVisibility(VISIBLE);
         }
     }
 
+    /**
+     * 对外的一个监听器
+     */
     public interface SelectedChangeListener {
         void onSelectedCountChanged(int count);
     }

@@ -285,7 +285,7 @@ public abstract class RecyclerAdapter<Data>
     }
 
     /**
-     * 实现一次方法
+     * 对回调接口做一次实现
      * @param <Data>
      */
     public static abstract class AdapterListenerImpl<Data> implements  AdapterListener<Data>{
