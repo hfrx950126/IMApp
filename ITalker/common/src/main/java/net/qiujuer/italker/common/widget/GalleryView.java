@@ -3,7 +3,6 @@ package net.qiujuer.italker.common.widget;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -29,7 +28,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class GalleyView extends RecyclerView {
+public class GalleryView extends RecyclerView {
     private static final int LOADER_ID = 0X0100;
     private static final int MAX_IMAGE_COUNT = 3;//最大的选中图片数量
     private static final int MIN_IMAGE_FILE_SIZE = 10*1024;//最小的图片大小
@@ -38,17 +37,17 @@ public class GalleyView extends RecyclerView {
     private List<Image> mSelectedImages = new LinkedList<>();
     private SelectedChangeListener mListener;
 
-    public GalleyView(Context context) {
+    public GalleryView(Context context) {
         super(context);
         init();
     }
 
-    public GalleyView(Context context, AttributeSet attrs) {
+    public GalleryView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public GalleyView(Context context, AttributeSet attrs, int defStyle) {
+    public GalleryView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
@@ -271,7 +270,7 @@ public class GalleyView extends RecyclerView {
 
         @Override
         protected ViewHolder<Image> onCreateViewHolder(View root, int viewType) {
-            return new GalleyView.ViewHolder(root);
+            return new GalleryView.ViewHolder(root);
         }
     }
 

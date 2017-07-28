@@ -1,13 +1,8 @@
 package net.qiujuer.italker.push.frags.main;
 
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import net.qiujuer.italker.common.app.Fragment;
-import net.qiujuer.italker.common.widget.GalleyView;
+import net.qiujuer.italker.common.widget.GalleryView;
 import net.qiujuer.italker.push.R;
 
 import butterknife.BindView;
@@ -16,8 +11,8 @@ import butterknife.BindView;
  * A simple {@link Fragment} subclass.
  */
 public class ActiveFragment extends Fragment {
-    @BindView(R.id.galleyView)
-    GalleyView mGalley;
+    @BindView(R.id.galleryView)
+    GalleryView mGalley;
 
     public ActiveFragment() {
         // Required empty public constructor
@@ -31,7 +26,7 @@ public class ActiveFragment extends Fragment {
     @Override
     protected void initData() {
         super.initData();
-        mGalley.setup(getLoaderManager(), new GalleyView.SelectedChangeListener() {
+        mGalley.setup(getLoaderManager(), new GalleryView.SelectedChangeListener() {
             @Override
             public void onSelectedCountChanged(int count) {
 

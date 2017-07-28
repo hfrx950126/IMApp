@@ -24,6 +24,7 @@ import net.qiujuer.genius.ui.widget.FloatActionButton;
 
 import net.qiujuer.italker.common.app.Activity;
 import net.qiujuer.italker.common.widget.PortraitView;
+import net.qiujuer.italker.push.activities.AccountActivity;
 import net.qiujuer.italker.push.frags.main.ActiveFragment;
 import net.qiujuer.italker.push.frags.main.ContactFragment;
 import net.qiujuer.italker.push.frags.main.GroupFragment;
@@ -99,7 +100,7 @@ public class MainActivity extends Activity
 
     @OnClick(R.id.btn_action)
     void onActionClick() {
-
+        AccountActivity.show(this);
     }
 
     boolean isFirst = true;
