@@ -85,7 +85,7 @@ public class GalleryFragment extends BottomSheetDialogFragment
         void onSelectedImage(String path);
     }
 
-    private static class TransStatusBottomSheetDialog extends BottomSheetDialog{
+    public static class TransStatusBottomSheetDialog extends BottomSheetDialog{
 
         public TransStatusBottomSheetDialog(@NonNull Context context) {
             super(context);
