@@ -6,11 +6,14 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.example.factory.Factory;
+import com.example.factory.net.UploadHelper;
 import com.yalantis.ucrop.UCrop;
 
 import net.qiujuer.italker.common.app.Application;
@@ -84,5 +87,16 @@ public class UpdateInfoFragment extends Fragment {
                 .asBitmap()
                 .centerCrop()
                 .into(mPortrait);
+
+        final String localPath = uri.getPath();
+
+
+        Factory.runOnAsync(new Runnable() {
+            @Override
+            public void run() {
+                 UploadHelper.uploadPortrait(localPath);
+                Log.e("aaaa",localPath);
+            }
+        });
     }
 }
