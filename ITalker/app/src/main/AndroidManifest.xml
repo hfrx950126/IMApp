@@ -36,9 +36,7 @@
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Main">
-
-        </activity>
+            android:theme="@style/AppTheme.Main"></activity>
         <activity
             android:name=".activities.AccountActivity"
             android:screenOrientation="portrait"
@@ -47,7 +45,9 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-
+        <activity
+            android:name=".activities.UserActivity"
+            android:label="@string/title_activity_user"></activity>
     </application>
 
 </manifest>
