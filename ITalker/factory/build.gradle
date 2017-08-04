@@ -30,6 +30,13 @@ dependencies {
     compile project(':common')
     compile "com.aliyun.dpa:oss-android-sdk:$rootProject.ext.ossVersion"
 
+    compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
+    compile "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
+
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${rootProject.ext.dbflowVersion}"
+    compile "com.github.Raizlabs.DBFlow:dbflow-core:${rootProject.ext.dbflowVersion}"
+    compile "com.github.Raizlabs.DBFlow:dbflow:${rootProject.ext.dbflowVersion}"
 
     testCompile 'junit:junit:4.12'
 }

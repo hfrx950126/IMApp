@@ -11,6 +11,7 @@ import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.example.factory.Factory;
 
+
 import java.io.File;
 import java.util.Date;
 
@@ -24,22 +25,22 @@ import utils.HashUtil;
  */
 public class UploadHelper {
     private static final String TAG = UploadHelper.class.getSimpleName();
-    // 阿里云OSS存储区域
+    // 与你们的存储区域有关系
     private static final String ENDPOINT = "http://oss-cn-hongkong.aliyuncs.com";
     // 上传的仓库名
-    private static final String BUCKET_NAME = "hfrx";
+    private static final String BUCKET_NAME = "italker-new";
 
 
     private static OSS getClient() {
         // 明文设置secret的方式建议只在测试时使用，更多鉴权模式请参考后面的`访问控制`章节
         OSSCredentialProvider credentialProvider = new OSSPlainTextAKSKCredentialProvider(
-                "LTAIlipObnR46Lnn", "ub1qD63BgZK7xsWqNiQgRD2XKHEdLN");
+                "LTAIYQD07p05pHQW", "2txxzT8JXiHKEdEjylumFy6sXcDQ0G");
         return new OSSClient(Factory.app(), ENDPOINT, credentialProvider);
     }
 
 
     /**
-     * 上传的最终方法，成功返回一个路径
+     * 上传的最终方法，成功返回则一个路径
      *
      * @param objKey 上传上去后，在服务器上的独立的KEY
      * @param path   需要上传的文件的路径
@@ -69,6 +70,7 @@ public class UploadHelper {
 
     /**
      * 上传普通图片
+     *
      * @param path 本地地址
      * @return 服务器地址
      */
