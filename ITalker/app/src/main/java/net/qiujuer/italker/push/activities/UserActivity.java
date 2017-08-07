@@ -1,6 +1,7 @@
 package net.qiujuer.italker.push.activities;
 
 
+import android.content.Context;
 import android.content.Intent;
 
 
@@ -9,9 +10,15 @@ import net.qiujuer.italker.common.app.Fragment;
 import net.qiujuer.italker.push.R;
 import net.qiujuer.italker.push.frags.user.UpdateInfoFragment;
 
+/**
+ * 用户信息界面
+ * 可以提供用户信息修改
+ */
 public class UserActivity extends Activity {
     private Fragment mCurFragment;
-
+    public static void show(Context context){
+        context.startActivity(new Intent(context,UserActivity.class));
+    }
 
     @Override
     protected int getContentLayoutId() {

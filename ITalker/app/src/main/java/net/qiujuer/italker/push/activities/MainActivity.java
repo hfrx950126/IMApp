@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.ViewTarget;
+import com.example.factory.persistence.Account;
 
 import net.qiujuer.genius.ui.Ui;
 import net.qiujuer.genius.ui.widget.FloatActionButton;
@@ -109,6 +110,18 @@ public class MainActivity extends Activity
 
     @OnClick(R.id.im_search)
     void onSearchMenuClick() {
+
+    }
+
+    @Override
+    protected boolean initArgs(Bundle bundle) {
+        if(Account.isComplete()){
+            //判断用户信息是否完全，完全则走正常流程
+            return super.initArgs(bundle);
+        }else{
+           UserActivity.show(this);
+            return false;
+        }
 
     }
 

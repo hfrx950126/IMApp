@@ -24,8 +24,8 @@ import butterknife.BindView;
 
 public class AccountActivity extends Activity implements AccountTrigger {
     private Fragment mCurFragment;
-    private LoginFragment mLoginFragment;
-    private RegisterFragment mRegisterFragment;
+    private Fragment mLoginFragment;
+    private Fragment mRegisterFragment;
 
     @BindView(R.id.im_bg)
     ImageView mBg;
@@ -33,7 +33,7 @@ public class AccountActivity extends Activity implements AccountTrigger {
     /**
      * 账户Activity显示的入口
      *
-     * @param context
+     * @param context Context
      */
     public static void show(Context context) {
         context.startActivity(new Intent(context, AccountActivity.class));
@@ -48,30 +48,30 @@ public class AccountActivity extends Activity implements AccountTrigger {
     protected void initWidget() {
         super.initWidget();
 
-        //初始化Fragment
-        mCurFragment = new LoginFragment();
+        // 初始化Fragment
+        mCurFragment = mLoginFragment = new LoginFragment();
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.lay_container, mCurFragment)
                 .commit();
-        //初始化背景
+
+        // 初始化背景
         Glide.with(this)
                 .load(R.drawable.bg_src_tianjin)
                 .centerCrop() //居中剪切
-        .into(new ViewTarget<ImageView,GlideDrawable>(mBg) {
-            @Override
-            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                //拿到Glide的Drawable
-                Drawable drawable = resource.getCurrent();
-
-                drawable = DrawableCompat.wrap(drawable);
-                drawable.setColorFilter(UiCompat.getColor(getResources(),R.color.colorAccent),
-                        PorterDuff.Mode.SCREEN); //设置着色的效果和颜色，蒙版模式
-                //设置给ImageView
-                this.view.setImageDrawable(drawable);
-            }
-        });
-
+                .into(new ViewTarget<ImageView, GlideDrawable>(mBg) {
+                    @Override
+                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                        // 拿到glide的Drawable
+                        Drawable drawable = resource.getCurrent();
+                        // 使用适配类进行包装
+                        drawable = DrawableCompat.wrap(drawable);
+                        drawable.setColorFilter(UiCompat.getColor(getResources(), R.color.colorAccent),
+                                PorterDuff.Mode.SCREEN); // 设置着色的效果和颜色，蒙板模式
+                        // 设置给ImageView
+                        this.view.setImageDrawable(drawable);
+                    }
+                });
     }
 
     @Override
@@ -79,18 +79,19 @@ public class AccountActivity extends Activity implements AccountTrigger {
         Fragment fragment;
         if (mCurFragment == mLoginFragment) {
             if (mRegisterFragment == null) {
-                //默认情况下为null
+                //默认情况下为null，
                 //第一次之后就不为null了
                 mRegisterFragment = new RegisterFragment();
             }
             fragment = mRegisterFragment;
         } else {
-            //默认情况下mLoginFragment已经赋值，无需判断null
+            // 因为默认请求下mLoginFragment已经赋值，无须判断null
             fragment = mLoginFragment;
         }
-        //重新赋值当前正在显示的Fragment
+
+        // 重新赋值当前正在显示的Fragment
         mCurFragment = fragment;
-        //切换显示
+        // 切换显示ø
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.lay_container, fragment)
                 .commit();

@@ -1,15 +1,125 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.qiujuer.italker.push.frags.account.UpdateInfoFragment">
+    android:orientation="vertical"
+    tools:background="@drawable/bg_src_tianjin"
+    tools:context="net.qiujuer.italker.push.frags.user.UpdateInfoFragment">
 
-    <net.qiujuer.italker.common.widget.PortraitView
-        android:id="@+id/im_portrait"
-        android:layout_width="@dimen/portraitMaxSize"
-        android:layout_height="@dimen/portraitMaxSize"
-        android:src="@color/colorAccent"
-        android:layout_gravity="center"
-        android:scaleType="centerCrop" />
 
-</FrameLayout>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_gradient_black"
+        android:paddingBottom="@dimen/len_32"
+        android:paddingTop="@dimen/statusBarSize">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/label_update_info_tips"
+            app:titleTextAppearance="@style/TextAppearance.AppCompat.Display1"
+            tools:layout_editor_absoluteX="8dp" />
+
+
+        <net.qiujuer.italker.common.widget.PortraitView
+            android:id="@+id/im_portrait"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/default_holder_add"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+            tools:layout_editor_absoluteX="146dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/label_portrait_tips"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/im_portrait"
+            tools:layout_editor_absoluteX="136dp" />
+
+        <ImageView
+            android:id="@+id/im_sex"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/sel_bg_sex"
+            android:contentDescription="@string/app_name"
+            android:padding="5dp"
+            android:src="@drawable/ic_sex_man"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/im_portrait"
+            app:layout_constraintEnd_toEndOf="@+id/im_portrait"
+            tools:layout_editor_absoluteX="208dp" />
+
+        <net.qiujuer.genius.ui.widget.EditText
+            android:id="@+id/edit_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/label_desc_tips"
+            android:inputType="textMultiLine"
+            android:maxLength="64"
+            android:maxLines="2"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white_alpha_128"
+            android:textSize="@dimen/font_16"
+            app:gHintTitle="none"
+            app:gLineColor="@color/white_alpha_160"
+            app:gLineSize="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:layout_editor_absoluteX="16dp" />
+    </android.support.constraint.ConstraintLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/len_28">
+
+        <net.qiujuer.genius.ui.widget.Button
+            android:id="@+id/btn_submit"
+            android:layout_width="@dimen/len_172"
+            android:layout_height="@dimen/len_44"
+            android:layout_gravity="center"
+            android:background="@drawable/sel_btn_bg_black_alpha_44"
+            android:text="@string/label_submit"
+            android:textColor="@color/white"
+            app:gTouchColor="@color/colorAccentAlpha"
+            app:gTouchCornerRadius="22dp"
+            app:gTouchEffect="ripple" />
+
+        <net.qiujuer.genius.ui.widget.Loading
+            android:id="@+id/loading"
+            android:layout_width="@dimen/len_36"
+            android:layout_height="@dimen/len_36"
+            android:layout_gravity="center"
+            app:gAutoRun="false"
+            app:gBackgroundColor="@color/trans"
+            app:gForegroundColor="@color/white"
+            app:gForegroundLineSize="1dp" />
+    </FrameLayout>
+
+</LinearLayout>
