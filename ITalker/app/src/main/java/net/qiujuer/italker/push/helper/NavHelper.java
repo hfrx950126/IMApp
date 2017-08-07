@@ -5,15 +5,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.SparseArray;
-import android.view.MenuItem;
-
-
 
 /**
  * 解决对Fragment的调度与重用问题
  * Created by Administrator on 2017/7/25 0025.
  */
-
 public class NavHelper<T> {
     //所有的Tab集合
     private final SparseArray<Tab<T>> tabs = new SparseArray<>();

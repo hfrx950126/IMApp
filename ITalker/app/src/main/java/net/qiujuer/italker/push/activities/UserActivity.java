@@ -16,6 +16,11 @@ import net.qiujuer.italker.push.frags.user.UpdateInfoFragment;
  */
 public class UserActivity extends Activity {
     private Fragment mCurFragment;
+
+    /**
+     * 显示界面的入口方法
+     * @param context
+     */
     public static void show(Context context){
         context.startActivity(new Intent(context,UserActivity.class));
     }

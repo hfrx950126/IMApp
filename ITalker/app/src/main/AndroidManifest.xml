@@ -60,7 +60,7 @@
         <activity
             android:name=".activities.UserActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.TransStatusBar"
+            android:theme="@style/AppTheme.Account"
             android:label="@string/title_activity_user"/>
     </application>
 
