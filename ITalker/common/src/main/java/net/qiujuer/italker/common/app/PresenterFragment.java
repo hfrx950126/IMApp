@@ -1,6 +1,5 @@
 package net.qiujuer.italker.common.app;
 
-import android.app.*;
 import android.content.Context;
 import android.support.annotation.StringRes;
 
@@ -17,7 +16,12 @@ public abstract class PresenterFragment<Presenter extends BaseContract.Presenter
 
     @Override
     public void showError(@StringRes int str) {
-        Application.showToast(str);
+        if(mPlaceHolderView!=null){
+            mPlaceHolderView.triggerError(str);
+        }else{
+            Application.showToast(str);
+        }
+
     }
 
     @Override
@@ -36,7 +40,9 @@ public abstract class PresenterFragment<Presenter extends BaseContract.Presenter
 
     @Override
     public void showLoading() {
-        //TODO 显示一个Loading
+        if(mPlaceHolderView!=null){
+            mPlaceHolderView.triggerLoading();
+        }
     }
 
     @Override
