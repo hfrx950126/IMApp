@@ -4,13 +4,15 @@ package com.example.factory.model.card;
 
 import com.example.factory.model.db.User;
 
+import net.qiujuer.italker.common.factory.model.Author;
+
 import java.util.Date;
 
 /**
  * @author qiujuer Email:qiujuer@live.cn
  * @version 1.0.0
  */
-public class UserCard {
+public class UserCard implements Author{
     private String id;
     private String name;
     private String phone;

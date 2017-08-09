@@ -67,7 +67,8 @@
             android:name=".activities.SearchActivity"
             android:label="@string/title_search"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Account"/>
+            android:theme="@style/AppTheme.Account" />
+        <activity android:name=".activities.MessageActivity"></activity>
     </application>
 
 </manifest>
