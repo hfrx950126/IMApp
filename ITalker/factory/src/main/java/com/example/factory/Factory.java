@@ -2,6 +2,7 @@ package com.example.factory;
 
 import android.support.annotation.StringRes;
 
+import com.example.factory.data.user.UserCenter;
 import com.example.factory.model.api.RspModel;
 import com.example.factory.persistence.Account;
 import com.example.factory.utils.DBFlowExclusionStrategy;
@@ -67,7 +68,12 @@ public class Factory {
         return Application.getInstance();
     }
 
-
+    /**
+     *
+     */
+    public static  UserCenter getUserCenter(){
+        return null;
+    }
     /**
      * 异步运行的方法
      *

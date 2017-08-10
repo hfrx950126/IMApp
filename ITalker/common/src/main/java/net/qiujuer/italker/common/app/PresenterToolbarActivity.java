@@ -1,25 +1,30 @@
 package net.qiujuer.italker.common.app;
 
-import android.content.Context;
 
 import net.qiujuer.italker.common.factory.presenter.BaseContract;
-
 
 /**
  * @author qiujuer Email:qiujuer@live.cn
  * @version 1.0.0
  */
-public abstract class PresenterFragment<Presenter extends BaseContract.Presenter> extends Fragment
-        implements BaseContract.View<Presenter> {
-
+public abstract class PresenterToolbarActivity<Presenter extends BaseContract.Presenter>
+        extends ToolbarActivity implements BaseContract.View<Presenter> {
     protected Presenter mPresenter;
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        // 在界面onAttach之后就触发初始化Presenter
+    protected void initBefore() {
+        super.initBefore();
+        // 初始化Presenter
         initPresenter();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 界面关闭时进行销毁的操作
+        if (mPresenter != null) {
+            mPresenter.destroy();
+        }
     }
 
     /**
@@ -46,16 +51,15 @@ public abstract class PresenterFragment<Presenter extends BaseContract.Presenter
         }
     }
 
+    protected void hideLoading() {
+        if (mPlaceHolderView != null) {
+            mPlaceHolderView.triggerOk();
+        }
+    }
+
     @Override
     public void setPresenter(Presenter presenter) {
         // View中赋值Presenter
         mPresenter = presenter;
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (mPresenter != null)
-            mPresenter.destroy();
     }
 }

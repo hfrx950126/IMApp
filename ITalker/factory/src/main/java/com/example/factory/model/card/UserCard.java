@@ -1,7 +1,5 @@
 package com.example.factory.model.card;
 
-
-
 import com.example.factory.model.db.User;
 
 import net.qiujuer.italker.common.factory.model.Author;
@@ -9,10 +7,11 @@ import net.qiujuer.italker.common.factory.model.Author;
 import java.util.Date;
 
 /**
+ * 用户卡片，用于接收服务器返回
  * @author qiujuer Email:qiujuer@live.cn
  * @version 1.0.0
  */
-public class UserCard implements Author{
+public class UserCard implements Author {
     private String id;
     private String name;
     private String phone;

@@ -10,6 +10,7 @@ import com.example.factory.model.db.AppDatabase;
 import com.example.factory.model.db.User;
 import com.example.factory.model.db.User_Table;
 import com.example.factory.persistence.Account;
+import com.example.factory.utils.DiffUiDataCallback;
 import com.raizlabs.android.dbflow.config.DatabaseDefinition;
 import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
@@ -77,8 +78,8 @@ public class ContactPresenter extends BasePresenter<ContactContract.View>
                     }
                 }).build().execute();
                 //网络的数据往往是新的。我们需要直接刷新到界面
-                getView().getRecyclerAdapter().replace(users);
-                getView().onAdapterDataChanged();
+                List<User> old = getView().getRecyclerAdapter().getItems();
+                diff(old, users);
             }
         });
         //TODO 问题：
@@ -87,31 +88,17 @@ public class ContactPresenter extends BasePresenter<ContactContract.View>
         //本地刷新和网络刷新，在添加到界面的时候会有可能冲突
         //如何识别已经在数据库中有这样的数据了
     }
-    private void diff(List<User> newList,List<User> oldList){
-        DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffUtil.Callback() {
-            @Override
-            public int getOldListSize() {
-                return 0;
-            }
 
-            @Override
-            public int getNewListSize() {
-                return 0;
-            }
+    private void diff(final List<User> oldList, final List<User> newList) {
+        //进行数据对比
+        DiffUtil.Callback callback = new DiffUiDataCallback<User>(oldList, newList);
+        DiffUtil.DiffResult result = DiffUtil.calculateDiff(callback);
 
-            @Override
-            public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-                return false;
-            }
+        //在对比完成后进行数据的赋值
+        getView().getRecyclerAdapter().replace(newList);
 
-            @Override
-            public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-                return false;
-            }
-        });
-
-
-        //
+        //尝试刷新界面
         result.dispatchUpdatesTo(getView().getRecyclerAdapter());
+        getView().onAdapterDataChanged();
     }
 }

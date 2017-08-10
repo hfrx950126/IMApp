@@ -24,6 +24,7 @@ import net.qiujuer.italker.common.widget.EmptyView;
 import net.qiujuer.italker.common.widget.PortraitView;
 import net.qiujuer.italker.common.widget.recycler.RecyclerAdapter;
 import net.qiujuer.italker.push.R;
+import net.qiujuer.italker.push.activities.PersonalActivity;
 import net.qiujuer.italker.push.activities.SearchActivity;
 
 import java.util.List;
@@ -123,6 +124,12 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
             mName.setText(userCard.getName());
             mFollow.setEnabled(!userCard.isFollow());
         }
+        @OnClick(R.id.im_portrait)
+        void onPortraitClick(){
+            //发起关注
+            PersonalActivity.show(getContext(),mData.getId());
+        }
+
         @OnClick(R.id.im_follow)
         void onFollowClick(){
             //发起关注

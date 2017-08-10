@@ -20,9 +20,9 @@ import butterknife.Unbinder;
 public abstract class Fragment extends android.support.v4.app.Fragment {
     protected View mRoot;
     protected Unbinder mRootUnBinder;
-    public PlaceHolderView mPlaceHolderView;
-    //标识是否是第一痴初始化数据
-    protected boolean mIsFirstData = true;
+    protected PlaceHolderView mPlaceHolderView;
+    // 标示是否第一次初始化数据
+    protected boolean mIsFirstInitData = true;
 
     @Override
     public void onAttach(Context context) {
@@ -55,11 +55,14 @@ public abstract class Fragment extends android.support.v4.app.Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // 当View创建完成后初始化数据
-        if(mIsFirstData){
-            mIsFirstData = false;
+        if (mIsFirstInitData) {
+            // 触发一次以后就不会触发
+            mIsFirstInitData = false;
+            // 触发
             onFirstInit();
         }
+
+        // 当View创建完成后初始化数据
         initData();
     }
 
@@ -91,12 +94,14 @@ public abstract class Fragment extends android.support.v4.app.Fragment {
     protected void initData() {
 
     }
+
     /**
-     * 当首次初始化数据的时候会被调用
+     * 当首次初始化数据的时候会调用的方法
      */
     protected void onFirstInit() {
 
     }
+
     /**
      * 返回按键触发时调用
      *
@@ -107,11 +112,13 @@ public abstract class Fragment extends android.support.v4.app.Fragment {
         return false;
     }
 
+
     /**
      * 设置占位布局
+     *
      * @param placeHolderView 继承了占位布局规范的View
      */
-    public void setPlaceHolderView(PlaceHolderView placeHolderView){
+    public void setPlaceHolderView(PlaceHolderView placeHolderView) {
         this.mPlaceHolderView = placeHolderView;
     }
 

@@ -3,18 +3,18 @@ package com.example.factory.model.db;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
-import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import net.qiujuer.italker.common.factory.model.Author;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
- * @author HFRX
+ * @author qiujuer Email:qiujuer@live.cn
  * @version 1.0.0
  */
 @Table(database = AppDatabase.class)
-public class User extends BaseModel implements Author{
+public class User extends BaseDbModel<User> implements Author {
     public static final int SEX_MAN = 1;
     public static final int SEX_WOMAN = 2;
 
@@ -140,21 +140,43 @@ public class User extends BaseModel implements Author{
         this.modifyAt = modifyAt;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return sex == user.sex
+                && follows == user.follows
+                && following == user.following
+                && isFollow == user.isFollow
+                && Objects.equals(id, user.id)
+                && Objects.equals(name, user.name)
+                && Objects.equals(phone, user.phone)
+                && Objects.equals(portrait, user.portrait)
+                && Objects.equals(desc, user.desc)
+                && Objects.equals(alias, user.alias)
+                && Objects.equals(modifyAt, user.modifyAt);
+    }
 
     @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", portrait='" + portrait + '\'' +
-                ", desc='" + desc + '\'' +
-                ", sex=" + sex +
-                ", alias='" + alias + '\'' +
-                ", follows=" + follows +
-                ", following=" + following +
-                ", isFollow=" + isFollow +
-                ", modifyAt=" + modifyAt +
-                '}';
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
+    @Override
+    public boolean isSame(User old) {
+        // 主要关注Id即可
+        return this == old || Objects.equals(id, old.id);
+    }
+
+    @Override
+    public boolean isUiContentSame(User old) {
+        // 显示的内容是否一样，主要判断 名字，头像，性别，是否已经关注
+        return this == old || (
+                Objects.equals(name, old.name)
+                        && Objects.equals(portrait, old.portrait)
+                        && Objects.equals(sex, old.sex)
+                        && Objects.equals(isFollow, old.isFollow)
+        );
     }
 }

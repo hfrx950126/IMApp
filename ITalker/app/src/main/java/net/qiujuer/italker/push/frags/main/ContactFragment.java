@@ -17,6 +17,7 @@ import net.qiujuer.italker.common.widget.PortraitView;
 import net.qiujuer.italker.common.widget.recycler.RecyclerAdapter;
 import net.qiujuer.italker.push.R;
 import net.qiujuer.italker.push.activities.MessageActivity;
+import net.qiujuer.italker.push.activities.PersonalActivity;
 
 import butterknife.BindView;
 
@@ -109,6 +110,10 @@ implements ContactContract.View{
             super(itemView);
         }
 
+        void onPortraitClick(){
+            //发起关注
+            PersonalActivity.show(getContext(),mData.getId());
+        }
         @Override
         protected void onBind(User user) {
            mPortraitView.setup(Glide.with(ContactFragment.this),user);
