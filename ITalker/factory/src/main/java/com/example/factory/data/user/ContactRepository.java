@@ -1,5 +1,6 @@
 package com.example.factory.data.user;
 
+import com.example.factory.data.BaseDbRepository;
 import com.example.factory.model.db.User;
 import com.example.factory.model.db.User_Table;
 import com.example.factory.persistence.Account;

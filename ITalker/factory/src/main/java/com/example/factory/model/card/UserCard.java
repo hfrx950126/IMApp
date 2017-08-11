@@ -1,5 +1,6 @@
 package com.example.factory.model.card;
 
+
 import com.example.factory.model.db.User;
 
 import net.qiujuer.italker.common.factory.model.Author;

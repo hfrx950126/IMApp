@@ -7,7 +7,6 @@ import com.example.factory.persistence.Account;
 
 import net.qiujuer.italker.common.Common;
 
-
 import java.io.IOException;
 
 import okhttp3.Interceptor;

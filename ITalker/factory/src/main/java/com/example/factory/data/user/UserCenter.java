@@ -1,6 +1,5 @@
 package com.example.factory.data.user;
 
-
 import com.example.factory.model.card.UserCard;
 
 /**

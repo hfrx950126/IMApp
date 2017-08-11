@@ -1,6 +1,9 @@
 package com.example.factory.data.user;
 
+
 import com.example.factory.model.db.User;
+
+import net.qiujuer.italker.common.factory.data.DbDataSource;
 
 /**
  * 联系人数据源

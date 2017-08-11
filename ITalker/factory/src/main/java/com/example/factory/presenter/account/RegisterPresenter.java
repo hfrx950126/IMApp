@@ -14,7 +14,6 @@ import net.qiujuer.italker.common.Common;
 import net.qiujuer.italker.common.factory.data.DataSource;
 import net.qiujuer.italker.common.factory.presenter.BasePresenter;
 
-
 import java.util.regex.Pattern;
 
 /**
@@ -31,8 +30,10 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View>
     public void register(String phone, String name, String password) {
         // 调用开始方法，在start中默认启动了Loading
         start();
+
         // 得到View接口
         RegisterContract.View view = getView();
+
         // 校验
         if (!checkMobile(phone)) {
             // 提示
@@ -72,7 +73,7 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View>
         final RegisterContract.View view = getView();
         if (view == null)
             return;
-        // 此时是从网络回送回来的，并不保证处于主线程状态
+        // 此时是从网络回送回来的，并不保证处于主现场状态
         // 强制执行在主线程中
         Run.onUiAsync(new Action() {
             @Override

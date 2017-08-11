@@ -5,7 +5,7 @@ import android.support.annotation.StringRes;
 /**
  * 数据源接口定义
  *
- * @author HFRX
+ * @author qiujuer Email:qiujuer@live.cn
  * @version 1.0.0
  */
 public interface DataSource {
@@ -37,5 +37,11 @@ public interface DataSource {
         // 数据加载失败, 网络请求失败
         void onDataNotAvailable(@StringRes int strRes);
     }
+
+
+    /**
+     * 销毁操作
+     */
+    void dispose();
 
 }
