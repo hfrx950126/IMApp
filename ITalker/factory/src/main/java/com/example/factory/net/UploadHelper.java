@@ -14,7 +14,7 @@ import com.example.factory.Factory;
 import java.io.File;
 import java.util.Date;
 
-import utils.HashUtil;
+import net.qiujuer.italker.common.utils.HashUtil;
 
 /**
  * 上传工具类，用于上传任意文件到阿里OSS存储

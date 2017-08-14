@@ -14,7 +14,7 @@ import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
 
-import utils.CollectionUtil;
+import net.qiujuer.italker.common.utils.CollectionUtil;
 
 /**
  * 基础的数据库仓库
@@ -28,7 +28,7 @@ public abstract class BaseDbRepository<Data extends BaseDbModel<Data>> implement
         QueryTransaction.QueryResultListCallback<Data> {
     // 和Presenter交互的回调
     private DataSource.SucceedCallback<List<Data>> callback;
-    private final List<Data> dataList = new LinkedList<>(); // 当前缓存的数据
+    protected final LinkedList<Data> dataList = new LinkedList<>(); // 当前缓存的数据
     private Class<Data> dataClass; // 当前范型对应的真实的Class信息
 
     @SuppressWarnings("unchecked")

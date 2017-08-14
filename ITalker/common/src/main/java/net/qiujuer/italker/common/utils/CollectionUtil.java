@@ -1,4 +1,4 @@
-package utils;
+package net.qiujuer.italker.common.utils;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

@@ -1,0 +1,8 @@
+package com.example.factory.presenter.message;
+
+/**
+ * Created by Administrator on 2017/8/13.
+ */
+
+public class ChatGroupPresenter {
+}
