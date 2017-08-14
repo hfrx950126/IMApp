@@ -15,7 +15,6 @@ import com.example.factory.persistence.Account;
 import net.qiujuer.genius.res.Resource;
 import net.qiujuer.genius.ui.compat.UiCompat;
 import net.qiujuer.italker.common.app.Activity;
-
 import net.qiujuer.italker.push.activities.AccountActivity;
 import net.qiujuer.italker.push.activities.MainActivity;
 import net.qiujuer.italker.push.frags.assist.PermissionsFragment;

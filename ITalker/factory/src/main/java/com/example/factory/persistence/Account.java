@@ -11,7 +11,6 @@ import com.example.factory.model.db.User_Table;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 
-
 /**
  * @author qiujuer Email:qiujuer@live.cn
  * @version 1.0.0

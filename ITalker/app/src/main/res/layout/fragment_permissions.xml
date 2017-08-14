@@ -14,11 +14,11 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:textAlignment="center"
-            app:title="@string/title_select_gallery"
+            app:title="@string/title_assist_permissions"
             app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium"
             app:titleTextColor="@color/textPrimary" />
     </android.support.design.widget.AppBarLayout>
-    <!--scrollview默认不能和coorinatorLayout交互-->
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -179,10 +179,9 @@
                 android:textColor="@color/white"
                 app:gTouchColor="@color/white_alpha_48"
                 app:gTouchCornerRadius="22dp"
-                app:gTouchEffect="ripple"/>
+                app:gTouchEffect="ripple" />
+
         </LinearLayout>
-
     </android.support.v4.widget.NestedScrollView>
-
 
 </android.support.design.widget.CoordinatorLayout>

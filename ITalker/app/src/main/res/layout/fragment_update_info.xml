@@ -17,59 +17,64 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar2"
-            android:layout_width="368dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:title="@string/label_update_info_tips"
-            app:titleTextAppearance="@style/TextAppearance.AppCompat.Display1"
-             />
+            app:titleTextAppearance="@style/TextAppearance.AppCompat.Display1" />
 
 
         <net.qiujuer.italker.common.widget.PortraitView
             android:id="@+id/im_portrait"
-            android:layout_width="92dp"
-            android:layout_height="92dp"
-            android:layout_marginTop="@dimen/len_32"
+            android:layout_width="@dimen/len_92"
+            android:layout_height="@dimen/len_92"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="32dp"
             android:src="@drawable/default_holder_add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar2"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/len_4"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
             android:text="@string/label_portrait_tips"
             android:textAlignment="center"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/im_portrait"
-             />
+            app:layout_constraintTop_toBottomOf="@+id/im_portrait" />
 
         <ImageView
             android:id="@+id/im_sex"
-            android:layout_width="@dimen/len_24"
-            android:layout_height="@dimen/len_24"
-            android:layout_marginBottom="@dimen/len_4"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="6dp"
             android:background="@drawable/sel_bg_sex"
             android:contentDescription="@string/app_name"
-            android:padding="@dimen/len_4"
+            android:padding="5dp"
             android:src="@drawable/ic_sex_man"
             android:tint="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/im_portrait"
-            app:layout_constraintEnd_toEndOf="@+id/im_portrait"
-             />
-        <!--match_parent 无效-->
+            app:layout_constraintEnd_toEndOf="@+id/im_portrait" />
+
         <net.qiujuer.genius.ui.widget.EditText
             android:id="@+id/edit_desc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:hint="@string/label_desc_tips"
             android:inputType="textMultiLine"
@@ -85,8 +90,7 @@
             app:gLineSize="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-             />
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
     </android.support.constraint.ConstraintLayout>
 
     <Space

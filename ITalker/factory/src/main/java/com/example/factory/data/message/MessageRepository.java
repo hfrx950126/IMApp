@@ -9,9 +9,6 @@ import com.raizlabs.android.dbflow.sql.language.OperatorGroup;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction;
 
-
-
-
 import java.util.Collections;
 import java.util.List;
 
@@ -35,6 +32,7 @@ public class MessageRepository extends BaseDbRepository<Message>
     @Override
     public void load(SucceedCallback<List<Message>> callback) {
         super.load(callback);
+
         //(sender_id == receiverId and group_id == null)
         // or (receiver_id==receiverId)
         SQLite.select()
@@ -48,10 +46,6 @@ public class MessageRepository extends BaseDbRepository<Message>
                 .async()
                 .queryListResultCallback(this)
                 .execute();
-        //(sender_id == receiverId and group_id == null)
-        // or (receiver_id==receiverId)
-
-
     }
 
     @Override

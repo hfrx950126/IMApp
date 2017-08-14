@@ -9,7 +9,6 @@ import net.qiujuer.genius.kit.handler.Run;
 import net.qiujuer.genius.kit.handler.runable.Action;
 import net.qiujuer.italker.common.factory.presenter.BasePresenter;
 
-
 /**
  * @author qiujuer Email:qiujuer@live.cn
  * @version 1.0.0
@@ -43,7 +42,11 @@ public class PersonalPresenter extends BasePresenter<PersonalContract.View>
 
     }
 
-
+    /**
+     * 进行界面的设置
+     *
+     * @param user 用户信息
+     */
     private void onLoaded(final User user) {
         this.user = user;
         // 是否就是我自己
@@ -58,6 +61,8 @@ public class PersonalPresenter extends BasePresenter<PersonalContract.View>
             @Override
             public void call() {
                 final PersonalContract.View view = getView();
+                if (view == null)
+                    return;
                 view.onLoadDone(user);
                 view.setFollowStatus(isFollow);
                 view.allowSayHello(allowSayHello);

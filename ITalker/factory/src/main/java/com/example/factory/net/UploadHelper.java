@@ -11,10 +11,10 @@ import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.example.factory.Factory;
 
+import net.qiujuer.italker.common.utils.HashUtil;
+
 import java.io.File;
 import java.util.Date;
-
-import net.qiujuer.italker.common.utils.HashUtil;
 
 /**
  * 上传工具类，用于上传任意文件到阿里OSS存储
@@ -25,7 +25,7 @@ import net.qiujuer.italker.common.utils.HashUtil;
 public class UploadHelper {
     private static final String TAG = UploadHelper.class.getSimpleName();
     // 与你们的存储区域有关系
-    private static final String ENDPOINT = "http://oss-cn-hongkong.aliyuncs.com";
+    public static final String ENDPOINT = "http://oss-cn-hongkong.aliyuncs.com";
     // 上传的仓库名
     private static final String BUCKET_NAME = "italker-new";
 

@@ -1,6 +1,5 @@
 package com.example.factory.presenter.account;
 
-
 import net.qiujuer.italker.common.factory.presenter.BaseContract;
 
 /**

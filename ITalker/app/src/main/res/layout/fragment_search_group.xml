@@ -4,10 +4,19 @@
     android:layout_height="match_parent"
     tools:context="net.qiujuer.italker.push.frags.search.SearchGroupFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/white"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/len_2"
+        android:paddingTop="@dimen/len_2"
+        android:visibility="gone" />
+
+    <net.qiujuer.italker.common.widget.EmptyView
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </FrameLayout>

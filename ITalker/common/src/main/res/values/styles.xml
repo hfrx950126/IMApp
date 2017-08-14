@@ -36,4 +36,10 @@
     </style>
 
     <style name="AppTheme.Base" parent="Theme.private" />
+
+    <style name="AppTheme.Dialog.Alert.Light" parent="Base.Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 </resources>

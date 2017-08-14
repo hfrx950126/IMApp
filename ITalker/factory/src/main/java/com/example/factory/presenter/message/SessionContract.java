@@ -1,20 +1,22 @@
 package com.example.factory.presenter.message;
 
+
 import com.example.factory.model.db.Session;
-import com.example.factory.model.db.User;
-import com.example.factory.presenter.contact.ContactContract;
 
 import net.qiujuer.italker.common.factory.presenter.BaseContract;
 
 /**
- * Created by Administrator on 2017/8/13.
+ * @author qiujuer Email:qiujuer@live.cn
+ * @version 1.0.0
  */
-
 public interface SessionContract {
-    interface Presenter extends BaseContract.Presenter{
+    // 什么都不需要额外定义，开始就是调用start即可
+    interface Presenter extends BaseContract.Presenter {
 
     }
-    interface View extends BaseContract.RecyclerView<Presenter,Session>{
+
+    // 都在基类完成了
+    interface View extends BaseContract.RecyclerView<Presenter, Session> {
 
     }
 }

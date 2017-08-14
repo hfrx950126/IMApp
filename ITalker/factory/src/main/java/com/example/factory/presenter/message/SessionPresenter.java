@@ -8,33 +8,33 @@ import com.example.factory.model.db.Session;
 import com.example.factory.presenter.BaseSourcePresenter;
 import com.example.factory.utils.DiffUiDataCallback;
 
-import net.qiujuer.italker.common.factory.data.DbDataSource;
-
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/8/13.
+ * 最近聊天列表的Presenter
+ *
+ * @author qiujuer Email:qiujuer@live.cn
+ * @version 1.0.0
  */
+public class SessionPresenter extends BaseSourcePresenter<Session, Session,
+        SessionDataSource, SessionContract.View> implements SessionContract.Presenter {
 
-public class SessionPresenter extends BaseSourcePresenter<Session,Session,SessionDataSource,SessionContract.View>
-implements SessionContract.Presenter{
-
-    public SessionPresenter( SessionContract.View view) {
-        super(new SessionRepository(),view);
+    public SessionPresenter(SessionContract.View view) {
+        super(new SessionRepository(), view);
     }
 
     @Override
     public void onDataLoaded(List<Session> sessions) {
         SessionContract.View view = getView();
-        if(view==null)
+        if (view == null)
             return;
 
-        //差异对比
+        // 差异对比
         List<Session> old = view.getRecyclerAdapter().getItems();
-        DiffUiDataCallback<Session> callback = new DiffUiDataCallback<>(old,sessions);
+        DiffUiDataCallback<Session> callback = new DiffUiDataCallback<>(old, sessions);
         DiffUtil.DiffResult result = DiffUtil.calculateDiff(callback);
 
-        //刷新界面
-        refreshData(result,sessions);
+        // 刷新界面
+        refreshData(result, sessions);
     }
 }

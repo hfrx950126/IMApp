@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.MainActivity">
+    tools:context="net.qiujuer.italker.push.activities.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -27,7 +27,6 @@
                 android:layout_width="@dimen/len_40"
                 android:layout_height="@dimen/len_40"
                 android:layout_margin="@dimen/len_4"
-                android:clickable="true"
                 android:foreground="@drawable/ic_touch_menu"
                 android:padding="@dimen/len_4"
                 android:scaleType="centerCrop"
@@ -52,7 +51,6 @@
                 android:foreground="@drawable/ic_touch_menu"
                 android:padding="@dimen/len_10"
                 android:scaleType="centerInside"
-                android:clickable="true"
                 android:src="@drawable/ic_search"
                 android:tint="?attr/toolbarMenuIconColor" />
 
@@ -73,10 +71,9 @@
         android:layout_marginBottom="@dimen/len_68"
         android:layout_marginEnd="@dimen/len_16"
         android:padding="@dimen/len_20"
-        android:translationY="@dimen/len_76"
         android:src="@drawable/ic_group_add"
         android:tint="@color/white"
-
+        android:translationY="@dimen/len_76"
         app:gBackgroundColor="@color/colorAccent"
         app:layout_anchor="@id/lay_container"
         app:layout_anchorGravity="bottom|end" />
@@ -90,11 +87,10 @@
         android:elevation="@dimen/len_4"
         android:outlineProvider="bounds"
         android:translationZ="@dimen/len_8"
-        app:menu="@menu/navigation_items"
-        tools:targetApi="lollipop"
         app:itemIconTint="@color/text_nav"
         app:itemTextColor="@color/text_nav"
-        app:elevation="@dimen/len_4"
+        app:menu="@menu/navigation_items"
+        tools:targetApi="lollipop"
         tools:visibility="invisible" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -8,7 +8,6 @@ import net.qiujuer.genius.kit.handler.runable.Action;
 import net.qiujuer.italker.common.factory.data.DataSource;
 import net.qiujuer.italker.common.factory.presenter.BasePresenter;
 
-
 /**
  * 关注的逻辑实现
  *

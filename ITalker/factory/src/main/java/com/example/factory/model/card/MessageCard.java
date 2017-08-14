@@ -1,5 +1,6 @@
 package com.example.factory.model.card;
 
+
 import com.example.factory.model.db.Group;
 import com.example.factory.model.db.Message;
 import com.example.factory.model.db.User;

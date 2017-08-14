@@ -1,4 +1,6 @@
 package com.example.factory.data.group;
+
+
 import com.example.factory.data.helper.DbHelper;
 import com.example.factory.data.helper.GroupHelper;
 import com.example.factory.data.helper.UserHelper;
@@ -7,6 +9,7 @@ import com.example.factory.model.card.GroupMemberCard;
 import com.example.factory.model.db.Group;
 import com.example.factory.model.db.GroupMember;
 import com.example.factory.model.db.User;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -14,7 +17,6 @@ import java.util.concurrent.Executors;
 
 /**
  * 群／群成员卡片中心的实现类
- *
  * @author qiujuer Email:qiujuer@live.cn
  * @version 1.0.0
  */

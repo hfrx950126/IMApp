@@ -22,7 +22,6 @@
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:scaleType="fitXY"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_launch_logo"
             app:layout_constraintBottom_toTopOf="@+id/guideline1"

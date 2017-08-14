@@ -7,14 +7,12 @@ import com.example.factory.model.db.BaseDbModel;
 import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction;
 
 import net.qiujuer.genius.kit.reflect.Reflector;
-import net.qiujuer.italker.common.factory.data.DataSource;
 import net.qiujuer.italker.common.factory.data.DbDataSource;
+import net.qiujuer.italker.common.utils.CollectionUtil;
 
 import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
-
-import net.qiujuer.italker.common.utils.CollectionUtil;
 
 /**
  * 基础的数据库仓库
@@ -27,7 +25,7 @@ public abstract class BaseDbRepository<Data extends BaseDbModel<Data>> implement
         DbHelper.ChangedListener<Data>,
         QueryTransaction.QueryResultListCallback<Data> {
     // 和Presenter交互的回调
-    private DataSource.SucceedCallback<List<Data>> callback;
+    private SucceedCallback<List<Data>> callback;
     protected final LinkedList<Data> dataList = new LinkedList<>(); // 当前缓存的数据
     private Class<Data> dataClass; // 当前范型对应的真实的Class信息
 
@@ -39,7 +37,7 @@ public abstract class BaseDbRepository<Data extends BaseDbModel<Data>> implement
     }
 
     @Override
-    public void load(DataSource.SucceedCallback<List<Data>> callback) {
+    public void load(SucceedCallback<List<Data>> callback) {
         this.callback = callback;
         // 进行数据库监听操作
         registerDbChangedListener();
@@ -154,7 +152,7 @@ public abstract class BaseDbRepository<Data extends BaseDbModel<Data>> implement
 
     // 通知界面刷新的方法
     private void notifyDataChange() {
-        DataSource.SucceedCallback<List<Data>> callback = this.callback;
+        SucceedCallback<List<Data>> callback = this.callback;
         if (callback != null)
             callback.onDataLoaded(dataList);
     }

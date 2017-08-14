@@ -4,8 +4,11 @@ package com.example.factory.presenter.message;
 import com.example.factory.model.db.Group;
 import com.example.factory.model.db.Message;
 import com.example.factory.model.db.User;
+import com.example.factory.model.db.view.MemberUserModel;
 
 import net.qiujuer.italker.common.factory.presenter.BaseContract;
+
+import java.util.List;
 
 /**
  * 聊天契约
@@ -19,7 +22,7 @@ public interface ChatContract {
         void pushText(String content);
 
         // 发送语音
-        void pushAudio(String path);
+        void pushAudio(String path, long time);
 
         // 发送图片
         void pushImages(String[] paths);
@@ -41,6 +44,10 @@ public interface ChatContract {
 
     // 群聊天的界面
     interface GroupView extends View<Group> {
+        // 显示管理员菜单
+        void showAdminOption(boolean isAdmin);
 
+        // 初始化成员信息
+        void onInitGroupMembers(List<MemberUserModel> members, long moreCount);
     }
 }
